@@ -14,16 +14,20 @@ class News{
           if(element['urlToImage']!=null && element["description"]!=null)
             {
               var str = element['publishedAt'];
-              var newStr = str.substring(0,10) + ' ' + str.substring(11,23);
+              var newStr = str.substring(0,10) + ' ' + str.substring(11,20);
               DateTime dt = DateTime.parse(newStr);
+              newStr = str.substring(11,16) + ' ' + str.substring(0,10);
 
-              ArticleModel articleModel = ArticleModel(title: element['title'], author: element['author'], description: element['description'], url: element['url'], urlToImage: element['urlToImage'], content: element['content'], publishedAt: dt);
+
+                  ArticleModel articleModel = ArticleModel(title: element['title'], author: element['author'], description: element['description'], url: element['url'], urlToImage: element['urlToImage'], content: element['content'], publishedAt: dt, str_publishedAt:newStr);
               news.add(articleModel);
             }
         });
       }
 
     news.sort((a,b)=> a.publishedAt.compareTo(b.publishedAt));
+
+
 
 
   }
